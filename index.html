@@ -1,0 +1,2893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hrmnx Entertainment - Links</title>
+    <link rel="icon" type="image/x-icon" href="images/logo.ico">
+
+    <!-- Google Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <style>
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: "Inter", sans-serif;
+            background: #111;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           BACKGROUND
+        ========================= */
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(255,255,255,0.08),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    180deg,
+                    #fff 0%,
+                    #4d678c 100%
+                );
+        }
+
+
+        /* =========================
+           MAIN CONTAINER
+        ========================= */
+
+        .page {
+            width: 100%;
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            padding: 45px 20px 60px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 680px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+
+        /* =========================
+           PROFILE
+        ========================= */
+
+        .profile {
+            text-align: center;
+            width: 100%;
+        }
+
+/* ========================================
+   BUBBLE
+======================================== */
+
+.bubble-wrap {
+    width: 125px;
+    height: 125px;
+
+    margin: 0 auto 22px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    perspective: 800px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease;
+}
+
+
+/* Main bubble */
+
+.bubble {
+    width: 115px;
+    height: 115px;
+
+    position: relative;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    transform-style: preserve-3d;
+
+    background:
+        radial-gradient(
+            circle at 30% 20%,
+            rgba(255,255,255,0.95) 0%,
+            rgba(255,255,255,0.25) 12%,
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 70% 80%,
+            rgba(0,0,0,0.35),
+            transparent 50%
+        ),
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.4),
+            rgba(0,0,255,0.18)
+        );
+
+    border:
+        2px solid rgba(255,255,255,0.7);
+
+    box-shadow:
+        inset 8px 8px 15px rgba(255,255,255,0.55),
+        inset -8px -10px 18px rgba(60,180,255,0.25),
+        0 0 20px rgba(140,220,255,0.25),
+        0 15px 35px rgba(255,255,255,0.3);
+
+    transition:
+        transform 0.18s cubic-bezier(.2,.8,.2,1),
+        box-shadow 0.3s ease;
+
+    animation:
+        bubbleFloat 4.5s ease-in-out infinite;
+}
+
+
+/* Profile picture */
+
+.bubble-image {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    z-index: 1;
+
+    opacity: 0.94;
+
+    filter:
+        saturate(0.95)
+        contrast(0.96);
+
+    transform: scale(1.015);
+}
+
+
+/* ========================================
+   WATER / GLASS LAYERS
+======================================== */
+
+.bubble::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -15%;
+
+    z-index: 3;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            ellipse at 28% 17%,
+            rgba(255,255,255,0.95) 0%,
+            rgba(255,255,255,0.5) 5%,
+            transparent 14%
+        ),
+        radial-gradient(
+            ellipse at 72% 28%,
+            rgba(255,255,255,0.55),
+            transparent 9%
+        ),
+        radial-gradient(
+            ellipse at 25% 75%,
+            rgba(255,255,255,0.22),
+            transparent 18%
+        );
+
+    mix-blend-mode: screen;
+
+    animation:
+        shineMove 5s ease-in-out infinite;
+}
+
+
+/* Soft blue watery reflection */
+
+.bubble::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 2;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.20),
+            transparent 30%,
+            rgba(90,210,255,0.12) 70%,
+            rgba(255,255,255,0.18)
+        );
+
+    mix-blend-mode: screen;
+}
+
+
+/* Additional moving shine */
+
+.bubble-shine {
+    position: absolute;
+
+    width: 65px;
+    height: 25px;
+
+    top: 8px;
+    left: 18px;
+
+    z-index: 4;
+
+    border-radius: 50%;
+
+    transform: rotate(-28deg);
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(255,255,255,0.75),
+            transparent 70%
+        );
+
+    filter: blur(2px);
+
+    pointer-events: none;
+
+    animation:
+        shineFloat 4s ease-in-out infinite;
+}
+
+
+/* Ethereal glow */
+
+.bubble-glow {
+    position: absolute;
+
+    inset: -12px;
+
+    border-radius: 50%;
+
+    z-index: -1;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(110,220,255,0.35),
+            rgba(100,180,255,0.08) 45%,
+            transparent 70%
+        );
+
+    filter: blur(10px);
+
+    opacity: 0.8;
+
+    animation:
+        glowPulse 3.5s ease-in-out infinite;
+}
+
+
+/* ========================================
+   FLOATING ANIMATION
+======================================== */
+
+@keyframes bubbleFloat {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(-1deg);
+    }
+
+    50% {
+        transform:
+            translateY(-9px)
+            rotate(1deg);
+    }
+
+    100% {
+        transform:
+            translateY(0)
+            rotate(-1deg);
+    }
+
+}
+
+
+/* Shine slowly moves */
+
+@keyframes shineMove {
+
+    0% {
+        transform: translate(-3px, -2px);
+    }
+
+    50% {
+        transform: translate(5px, 4px);
+    }
+
+    100% {
+        transform: translate(-3px, -2px);
+    }
+
+}
+
+
+/* Highlight movement */
+
+@keyframes shineFloat {
+
+    0% {
+        transform:
+            translate(0, 0)
+            rotate(-28deg);
+        opacity: 0.65;
+    }
+
+    50% {
+        transform:
+            translate(7px, 5px)
+            rotate(-24deg);
+        opacity: 0.9;
+    }
+
+    100% {
+        transform:
+            translate(0, 0)
+            rotate(-28deg);
+        opacity: 0.65;
+    }
+
+}
+
+
+/* Glow breathing */
+
+@keyframes glowPulse {
+
+    0% {
+        transform: scale(0.95);
+        opacity: 0.55;
+    }
+
+    50% {
+        transform: scale(1.08);
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: scale(0.95);
+        opacity: 0.55;
+    }
+
+}
+
+
+/* ========================================
+   CLICK PINCH
+======================================== */
+
+.bubble-wrap.pinching .bubble {
+
+    animation:
+        bubblePinch 0.65s cubic-bezier(.3,1.5,.4,1) forwards;
+}
+
+
+@keyframes bubblePinch {
+
+    0% {
+        transform: scale(1);
+    }
+
+    18% {
+        transform:
+            scaleX(1.14)
+            scaleY(0.84);
+    }
+
+    35% {
+        transform:
+            scaleX(0.86)
+            scaleY(1.13);
+    }
+
+    52% {
+        transform:
+            scaleX(1.07)
+            scaleY(0.94);
+    }
+
+    70% {
+        transform:
+            scaleX(0.97)
+            scaleY(1.04);
+    }
+
+    100% {
+        transform:
+            scale(1);
+    }
+
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+    .bubble-wrap {
+        width: 108px;
+        height: 108px;
+    }
+
+    .bubble {
+        width: 100px;
+        height: 100px;
+    }
+
+}
+        .avatar {
+            width: 105px;
+            height: 105px;
+
+            border-radius: 50%;
+            object-fit: cover;
+
+            display: block;
+            margin: 0 auto 18px;
+
+            border: 2px solid rgba(255,255,255,0.9);
+
+            box-shadow:
+                0 10px 40px rgba(255,255,255,0.35);
+        }
+
+        .username {
+            font-family: "DM Sans", sans-serif;
+            font-size: 38px;
+            font-weight: 400;
+
+            margin-bottom: 5px;
+        }
+
+        .handle {
+            font-size: 14px;
+            color: rgba(255,255,255,0.55);
+
+            margin-bottom: 13px;
+        }
+
+        .bio {
+            max-width: 460px;
+            margin: 0 auto;
+
+            font-size: 14px;
+            line-height: 1.6;
+
+            color: rgba(255,255,255,0.78);
+        }
+
+
+        /* =========================
+           SOCIAL ICONS
+        ========================= */
+
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 17px;
+
+            margin-top: 22px;
+            margin-bottom: 28px;
+        }
+
+        .social {
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border-radius: 50%;
+
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.08);
+
+            font-size: 17px;
+
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease;
+        }
+
+        .social:hover {
+            transform: translateY(-4px);
+            background: rgba(255,255,255,0.16);
+        }
+
+
+        /* =========================
+           LINKS
+        ========================= */
+
+        .links {
+            width: 100%;
+
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .link {
+            width: 100%;
+            min-height: 64px;
+
+            position: relative;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 14px 60px;
+
+            border-radius: 100px;
+
+            background: rgba(255,255,255,0.09);
+            border: 1px solid rgba(255,255,255,0.10);
+
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+
+            font-size: 15px;
+            font-weight: 600;
+
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .link:hover {
+            transform: translateY(-3px) scale(1.01);
+
+            background: rgba(255,255,255,0.15);
+
+            box-shadow:
+                0 12px 30px rgba(0,0,0,0.22);
+        }
+
+        .link-icon {
+            position: absolute;
+            left: 20px;
+
+            width: 25px;
+
+            display: flex;
+            justify-content: center;
+
+            font-size: 18px;
+        }
+
+        .link-arrow {
+            position: absolute;
+            right: 20px;
+
+            opacity: 0.45;
+
+            transition:
+                transform 0.25s ease,
+                opacity 0.25s ease;
+        }
+
+        .link:hover .link-arrow {
+            transform: translateX(4px);
+            opacity: 1;
+        }
+
+
+        /* =========================
+           FEATURED LINK
+        ========================= */
+
+        .featured {
+            background: #fff;
+            color: #111;
+
+            border-color: #fff;
+        }
+
+        .featured:hover {
+            background: #f1f1f1;
+        }
+
+        .featured .link-icon {
+            color: #111;
+        }
+
+
+        /* =========================
+           SECTION TITLES
+        ========================= */
+
+        .section-title {
+            width: 100%;
+
+            margin-top: 30px;
+            margin-bottom: 10px;
+
+            font-size: 12px;
+            font-weight: 600;
+
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+
+            color: rgba(255,255,255,0.45);
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            margin-top: 38px;
+
+            text-align: center;
+
+            font-size: 11px;
+
+            color: rgba(255,255,255,0.35);
+        }
+
+        footer a {
+            transition: color 0.2s ease;
+        }
+
+        footer a:hover {
+            color: #fff;
+        }
+
+/* ========================================
+   RELEASE OVERLAY
+======================================== */
+
+.release-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
+
+    background: rgba(255,255,255,0);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity 0.35s ease,
+        background 0.35s ease,
+        visibility 0.35s ease;
+
+    overflow-y: auto;
+}
+
+
+/* Open state */
+
+.release-overlay.active {
+    opacity: 1;
+
+    visibility: visible;
+
+    background: rgba(255,255,255,0.68);
+
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+
+/* ========================================
+   MAIN WINDOW
+======================================== */
+
+.release-window {
+
+    width: 100%;
+
+    max-width: 850px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: #fff;
+
+    color: #111;
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.18),
+        0 5px 20px rgba(0,0,0,0.08);
+
+    padding: 32px;
+
+    transform:
+        translateY(30px)
+        scale(0.96);
+
+    opacity: 0;
+
+    transition:
+        transform 0.4s cubic-bezier(.2,.8,.2,1),
+        opacity 0.3s ease;
+
+    scrollbar-width: thin;
+}
+
+
+/* Window opening */
+
+.release-overlay.active .release-window {
+
+    transform:
+        translateY(0)
+        scale(1);
+
+    opacity: 1;
+}
+
+
+/* ========================================
+   HEADER
+======================================== */
+
+.release-header {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 30px;
+}
+
+
+.release-eyebrow {
+
+    margin-bottom: 5px;
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.14em;
+
+    color: #999;
+
+}
+
+
+.release-header h2 {
+
+    margin: 0;
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 32px;
+
+    line-height: 1.1;
+
+    font-weight: 700;
+
+    letter-spacing: -0.04em;
+}
+
+
+/* ========================================
+   CLOSE BUTTON
+======================================== */
+
+.release-close {
+
+    width: 42px;
+
+    height: 42px;
+
+    flex-shrink: 0;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #f2f2f2;
+
+    color: #111;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 16px;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.release-close:hover {
+
+    background: #e8e8e8;
+
+    transform: rotate(8deg) scale(1.05);
+}
+
+
+/* ========================================
+   RELEASE LIST
+======================================== */
+
+.release-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+
+/* ========================================
+   RELEASE CARD
+======================================== */
+
+.release-card {
+
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: 180px 1fr;
+
+    gap: 25px;
+
+    padding: 18px;
+
+    border-radius: 22px;
+
+    background: #f7f7f7;
+
+    border: 1px solid #ededed;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.release-card:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,0.08);
+}
+
+
+/* ========================================
+   COVER
+======================================== */
+
+.release-cover {
+
+    width: 180px;
+
+    aspect-ratio: 1 / 1;
+
+    object-fit: cover;
+
+    border-radius: 16px;
+
+    display: block;
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.12);
+}
+
+
+/* ========================================
+   RELEASE INFORMATION
+======================================== */
+
+.release-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 0;
+}
+
+
+.release-artist {
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    color: #777;
+
+    margin-bottom: 4px;
+}
+
+
+.release-title {
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 26px;
+
+    line-height: 1.15;
+
+    font-weight: 700;
+
+    letter-spacing: -0.035em;
+
+    margin-bottom: 8px;
+}
+
+
+.release-type {
+
+    display: inline-flex;
+
+    width: fit-content;
+
+    padding: 5px 9px;
+
+    border-radius: 999px;
+
+    background: #111;
+
+    color: #fff;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.08em;
+
+    margin-bottom: 16px;
+}
+
+
+.release-date {
+
+    font-size: 12px;
+
+    color: #888;
+
+    margin-bottom: 18px;
+}
+
+
+/* ========================================
+   TRACKLIST
+======================================== */
+
+.tracklist {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+    margin-bottom: 20px;
+}
+
+
+.track {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 12px;
+
+    color: #444;
+
+    padding: 7px 0;
+
+    border-bottom: 1px solid #e8e8e8;
+}
+
+
+.track-number {
+
+    width: 20px;
+
+    color: #aaa;
+
+    font-size: 10px;
+}
+
+
+.track-name {
+
+    flex: 1;
+}
+
+
+/* ========================================
+   STREAMING BUTTONS
+======================================== */
+
+.platforms {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    margin-top: auto;
+}
+
+
+.platform {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 9px 12px;
+
+    border-radius: 999px;
+
+    background: #111;
+
+    color: #fff;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.platform:hover {
+
+    transform: translateY(-2px);
+
+    background: #333;
+}
+
+
+/* ========================================
+   PRE-RELEASE COUNTDOWN
+======================================== */
+
+.release-countdown {
+
+    margin-bottom: 18px;
+
+    padding: 14px;
+
+    border-radius: 15px;
+
+    background: #fff;
+
+    border: 1px solid #e5e5e5;
+}
+
+
+.countdown-label {
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+
+    color: #999;
+
+    margin-bottom: 5px;
+}
+
+
+.countdown {
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 19px;
+
+    font-weight: 700;
+
+    letter-spacing: -0.02em;
+}
+
+
+/* ========================================
+   DISTRIBUTION PROBLEM
+======================================== */
+
+.release-problem {
+
+    margin-bottom: 18px;
+
+    padding: 13px 15px;
+
+    border-radius: 14px;
+
+    background: #fff3f3;
+
+    border: 1px solid #ffdcdc;
+
+    color: #a33;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+}
+
+
+.release-problem strong {
+
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.08em;
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 650px) {
+
+    .release-overlay {
+
+        padding: 12px;
+
+        align-items: flex-end;
+    }
+
+
+    .release-window {
+
+        max-height: 94vh;
+
+        padding: 22px;
+
+        border-radius: 25px 25px 20px 20px;
+    }
+
+
+    .release-header {
+
+        margin-bottom: 22px;
+    }
+
+
+    .release-header h2 {
+
+        font-size: 27px;
+    }
+
+
+    .release-card {
+
+        grid-template-columns: 105px 1fr;
+
+        gap: 15px;
+
+        padding: 13px;
+
+        border-radius: 18px;
+    }
+
+
+    .release-cover {
+
+        width: 105px;
+
+        border-radius: 12px;
+    }
+
+
+    .release-title {
+
+        font-size: 20px;
+    }
+
+
+    .release-artist {
+
+        font-size: 11px;
+    }
+
+
+    .release-type {
+
+        margin-bottom: 10px;
+
+        font-size: 8px;
+
+        padding: 4px 7px;
+    }
+
+
+    .release-date {
+
+        margin-bottom: 10px;
+
+        font-size: 10px;
+    }
+
+
+    .track {
+
+        font-size: 10px;
+
+        padding: 5px 0;
+    }
+
+
+    .platform {
+
+        font-size: 9px;
+
+        padding: 7px 9px;
+    }
+
+}
+
+
+@media (max-width: 430px) {
+
+    .release-card {
+
+        grid-template-columns: 85px 1fr;
+
+        gap: 12px;
+    }
+
+
+    .release-cover {
+
+        width: 85px;
+    }
+
+
+    .release-title {
+
+        font-size: 17px;
+    }
+
+}
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .page {
+                padding:
+                    32px
+                    15px
+                    45px;
+            }
+
+            .container {
+                max-width: 100%;
+            }
+
+            .avatar {
+                width: 92px;
+                height: 92px;
+
+                margin-bottom: 15px;
+            }
+
+            .username {
+                font-size: 34px;
+            }
+
+            .handle {
+                font-size: 13px;
+            }
+
+            .bio {
+                font-size: 13px;
+                max-width: 330px;
+            }
+
+            .socials {
+                margin-top: 18px;
+                margin-bottom: 25px;
+            }
+
+            .social {
+                width: 40px;
+                height: 40px;
+            }
+
+            .links {
+                gap: 11px;
+            }
+
+            .link {
+                min-height: 58px;
+
+                border-radius: 15px;
+
+                font-size: 14px;
+
+                padding-left: 55px;
+                padding-right: 55px;
+            }
+
+            .section-title {
+                margin-top: 25px;
+            }
+
+            footer {
+                margin-top: 30px;
+            }
+        }
+
+
+        /* =========================
+           COMPUTER
+        ========================= */
+
+        @media (min-width: 601px) {
+
+            .page {
+                padding-top: 70px;
+            }
+
+            .container {
+                max-width: 650px;
+            }
+
+            .avatar {
+                width: 115px;
+                height: 115px;
+            }
+
+            .username {
+                font-size: 44px;
+            }
+
+            .bio {
+                font-size: 15px;
+            }
+
+            .link {
+                min-height: 68px;
+                border-radius: 18px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <main class="page">
+
+        <div class="container">
+
+
+            <!-- =========================
+                 PROFILE
+            ========================== -->
+
+            <section class="profile">
+
+<div class="bubble-wrap" id="profileBubble">
+    <div class="bubble">
+        <div class="bubble-shine"></div>
+        <div class="bubble-glow"></div>
+
+        <img
+            src=""
+            alt=""
+            class="bubble-image"
+        >
+    </div>
+</div>
+
+                <h1 class="username">
+                    Hrmnx Entertainment
+                </h1>
+
+                <p class="handle">
+                    @officialhrmnx
+                </p>
+
+                <p class="bio">
+                    Entertainment Agency · Record Label<br>
+		    The Home of the Best
+                </p>
+
+
+                <!-- =========================
+                     SOCIALS
+                ========================== -->
+
+                <div class="socials">
+
+                    <a
+                        href="https://instagram.com/officialhrmnx"
+                        class="social"
+                        target="_blank"
+                        aria-label="Instagram"
+                    >
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a
+                        href="https://youtube.com/@harmoniajp"
+                        class="social"
+                        target="_blank"
+                        aria-label="YouTube"
+                    >
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+
+                    <a
+                        href="https://tiktok.com/@officialhrmnx"
+                        class="social"
+                        target="_blank"
+                        aria-label="TikTok"
+                    >
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 LINKS
+            ========================== -->
+
+            <section class="links">
+
+
+                <!-- =========================
+                     FIRST SECTION
+                ========================== -->
+
+                <div class="section-title">
+                    Music
+                </div>
+
+                <a href="#" class="link" onclick="openReleases(event)">
+
+                    <span class="link-icon">
+                        <i class="fa-solid fa-music"></i>
+                    </span>
+
+                    <span>
+                        New Releases
+                    </span>
+
+                    <span class="link-arrow">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </span>
+
+                </a>
+
+
+                <!-- =========================
+                     SECOND SECTION
+                ========================== -->
+
+                <div class="section-title">
+                    Websites
+                </div>
+
+                <a
+                    href="https://hrmnx.yumeworldyami.net"
+                    class="link"
+                >
+
+                    <span class="link-icon">
+                        <i class="fa-solid fa-globe"></i>
+                    </span>
+
+                    <span>
+                        Official Hrmnx Website
+                    </span>
+
+                    <span class="link-arrow">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="https://yumeworldyami.net"
+                    class="link"
+                >
+
+                    <span class="link-icon">
+                        <i class="fa-solid fa-globe"></i>
+                    </span>
+
+                    <span>
+                        Official Website
+                    </span>
+
+                    <span class="link-arrow">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="https://kiki.yumeworldyami.net"
+                    class="link"
+                >
+
+                    <span class="link-icon">
+                        <i class="fa-solid fa-globe"></i>
+                    </span>
+
+                    <span>
+                        KiKi: Artist Updates
+                    </span>
+
+                    <span class="link-arrow">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="https://elasticstage.com/seiun"
+                    class="link"
+                >
+
+                    <span class="link-icon">
+                        <i class="fa-solid fa-store"></i>
+                    </span>
+
+                    <span>
+                        SEIUN Store
+                    </span>
+
+                    <span class="link-arrow">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </span>
+
+                </a>
+
+                <a
+                    href="https://elasticstage.com/harmonia"
+                    class="link"
+                >
+
+                    <span class="link-icon">
+                        <i class="fa-solid fa-store"></i>
+                    </span>
+
+                    <span>
+                        Harmonia Store
+                    </span>
+
+                    <span class="link-arrow">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </span>
+
+                </a>
+
+                <a
+                    href="https://elasticstage.com/osakosdiary"
+                    class="link"
+                >
+
+                    <span class="link-icon">
+                        <i class="fa-solid fa-store"></i>
+                    </span>
+
+                    <span>
+                        Osako's Diary Store
+                    </span>
+
+                    <span class="link-arrow">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </span>
+
+                </a>
+
+                <a
+                    href="https://elasticstage.com/aihinasato"
+                    class="link"
+                >
+
+                    <span class="link-icon">
+                        <i class="fa-solid fa-store"></i>
+                    </span>
+
+                    <span>
+                        Soundtrack (佐藤愛ひな) Store
+                    </span>
+
+                    <span class="link-arrow">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </span>
+
+                </a>
+
+
+
+
+                <!-- =========================
+                     THIRD SECTION
+                ========================== -->
+
+                <div class="section-title">
+                    More
+                </div>
+
+
+                <a
+                    href="mailto:general@yumeworldyami.net"
+                    class="link"
+                >
+
+                    <span class="link-icon">
+                        <i class="fa-regular fa-envelope"></i>
+                    </span>
+
+                    <span>
+                        Contact Us
+                    </span>
+
+                    <span class="link-arrow">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </span>
+
+                </a>
+
+
+            </section>
+
+
+            <!-- =========================
+                 FOOTER
+            ========================== -->
+
+            <footer>
+
+                <p>
+                    © 2026 Hrmnx Entertainment
+                </p>
+
+            </footer>
+
+
+        </div>
+
+    </main>
+
+<!-- ========================================
+     RELEASE GUI
+======================================== -->
+
+<div
+    class="release-overlay"
+    id="releaseOverlay"
+    onclick="closeReleases(event)"
+>
+
+    <div
+        class="release-window"
+        id="releaseWindow"
+        onclick="event.stopPropagation()"
+    >
+
+        <!-- HEADER -->
+
+        <div class="release-header">
+
+            <div>
+                <p class="release-eyebrow">
+                    HRMNX ENTERTAINMENT
+                </p>
+
+                <h2>
+                    New Releases
+                </h2>
+            </div>
+
+            <button
+                class="release-close"
+                onclick="closeReleases()"
+                aria-label="Close"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+        </div>
+
+
+        <!-- RELEASES -->
+
+        <div
+            class="release-list"
+            id="releaseList"
+        ></div>
+
+    </div>
+
+</div>
+
+<script>
+
+/* ========================================
+   RELEASE DATABASE
+======================================== */
+
+const releases = [
+
+    {
+        artist: "Osako's Diary",
+
+        title: "Twin Stars",
+
+        type: "Single",
+
+        cover: "images/twinstars.jpg",
+
+        releaseDate: "August 25, 2026",
+
+        releaseTimestamp: "2026-08-28T00:00:00+02:00",
+
+        released: true,
+
+        distributionProblem: true,
+
+        problemMessage: "There are some problems with the distribution, please stay patient while we fix this problem as fast as possible.",
+
+        tracks: [
+            "Twin Stars"
+        ],
+
+platforms: [
+    {
+        name: "Spotify",
+        icon: "fa-brands fa-spotify",
+        url: "YOUR_SPOTIFY_LINK"
+    },
+
+    {
+        name: "Melon",
+        icon: "fa-solid fa-music",
+        url: "YOUR_MELON_LINK"
+    },
+
+    {
+        name: "FLO",
+        icon: "fa-solid fa-music",
+        url: "YOUR_FLO_LINK"
+    },
+
+    {
+        name: "Genie Music",
+        icon: "fa-solid fa-music",
+        url: "YOUR_GENIE_LINK"
+    },
+
+    {
+        name: "Deezer",
+        icon: "fa-brands fa-deezer",
+        url: "YOUR_DEEZER_LINK"
+    },
+
+    {
+        name: "iTunes",
+        icon: "fa-brands fa-apple",
+        url: "YOUR_ITUNES_LINK"
+    },
+
+    {
+        name: "Apple Music",
+        icon: "fa-brands fa-apple",
+        url: "YOUR_APPLE_MUSIC_LINK"
+    },
+
+    {
+        name: "YouTube Music",
+        icon: "fa-brands fa-youtube",
+        url: "YOUR_YOUTUBE_MUSIC_LINK"
+    },
+
+    {
+        name: "Amazon Music",
+        icon: "fa-brands fa-amazon",
+        url: "YOUR_AMAZON_MUSIC_LINK"
+    },
+
+    {
+        name: "SoundCloud",
+        icon: "fa-brands fa-soundcloud",
+        url: "YOUR_SOUNDCLOUD_LINK"
+    },
+
+    {
+        name: "TIDAL",
+        icon: "fa-solid fa-water",
+        url: "YOUR_TIDAL_LINK"
+    },
+
+    {
+        name: "LINE MUSIC",
+        icon: "fa-solid fa-music",
+        url: "YOUR_LINE_MUSIC_LINK"
+    },
+
+    {
+        name: "AWA",
+        icon: "fa-solid fa-music",
+        url: "YOUR_AWA_LINK"
+    },
+
+    {
+        name: "Bugs!",
+        icon: "fa-solid fa-music",
+        url: "YOUR_BUGS_LINK"
+    }
+]
+    },
+
+
+    {
+        artist: "SEIUN",
+
+        title: "WINK: The Beginning",
+
+        type: "Single",
+
+        cover: "images/winkthebeginning.jpg",
+
+        releaseDate: "September 28, 2026",
+
+        releaseTimestamp: "2026-09-28T00:00:00+02:00",
+
+        released: false,
+
+        distributionProblem: false,
+
+        problemMessage: "",
+
+        tracks: [
+            "WINK"
+        ],
+
+platforms: [
+    {
+        name: "Spotify",
+        icon: "fa-brands fa-spotify",
+        url: "YOUR_SPOTIFY_LINK"
+    },
+
+    {
+        name: "Melon",
+        icon: "fa-solid fa-music",
+        url: "YOUR_MELON_LINK"
+    },
+
+    {
+        name: "FLO",
+        icon: "fa-solid fa-music",
+        url: "YOUR_FLO_LINK"
+    },
+
+    {
+        name: "Genie Music",
+        icon: "fa-solid fa-music",
+        url: "YOUR_GENIE_LINK"
+    },
+
+    {
+        name: "Deezer",
+        icon: "fa-brands fa-deezer",
+        url: "YOUR_DEEZER_LINK"
+    },
+
+    {
+        name: "iTunes",
+        icon: "fa-brands fa-apple",
+        url: "YOUR_ITUNES_LINK"
+    },
+
+    {
+        name: "Apple Music",
+        icon: "fa-brands fa-apple",
+        url: "YOUR_APPLE_MUSIC_LINK"
+    },
+
+    {
+        name: "YouTube Music",
+        icon: "fa-brands fa-youtube",
+        url: "YOUR_YOUTUBE_MUSIC_LINK"
+    },
+
+    {
+        name: "Amazon Music",
+        icon: "fa-brands fa-amazon",
+        url: "YOUR_AMAZON_MUSIC_LINK"
+    },
+
+    {
+        name: "SoundCloud",
+        icon: "fa-brands fa-soundcloud",
+        url: "YOUR_SOUNDCLOUD_LINK"
+    },
+
+    {
+        name: "TIDAL",
+        icon: "fa-solid fa-water",
+        url: "YOUR_TIDAL_LINK"
+    },
+
+    {
+        name: "LINE MUSIC",
+        icon: "fa-solid fa-music",
+        url: "YOUR_LINE_MUSIC_LINK"
+    },
+
+    {
+        name: "AWA",
+        icon: "fa-solid fa-music",
+        url: "YOUR_AWA_LINK"
+    },
+
+    {
+        name: "Bugs!",
+        icon: "fa-solid fa-music",
+        url: "YOUR_BUGS_LINK"
+    }
+]
+    },
+
+    {
+        artist: "SEIUN",
+
+        title: "WINK: The 1st Mini Album",
+
+        type: "EP",
+
+        cover: "images/wink.jpg",
+
+        releaseDate: "December 15, 2026",
+
+        releaseTimestamp: "2026-12-15T00:00:00+02:00",
+
+        released: false,
+
+        distributionProblem: false,
+
+        problemMessage: "",
+
+        tracks: [
+            "SUGAR",
+            "WINK",
+            "FALLEN ANGEL",
+            "세이운 (SEIUN)",
+            "SOFT CLOUD",
+            "ME & YOU"
+        ],
+
+platforms: [
+    {
+        name: "Spotify",
+        icon: "fa-brands fa-spotify",
+        url: "YOUR_SPOTIFY_LINK"
+    },
+
+    {
+        name: "Melon",
+        icon: "fa-solid fa-music",
+        url: "YOUR_MELON_LINK"
+    },
+
+    {
+        name: "FLO",
+        icon: "fa-solid fa-music",
+        url: "YOUR_FLO_LINK"
+    },
+
+    {
+        name: "Genie Music",
+        icon: "fa-solid fa-music",
+        url: "YOUR_GENIE_LINK"
+    },
+
+    {
+        name: "Deezer",
+        icon: "fa-brands fa-deezer",
+        url: "YOUR_DEEZER_LINK"
+    },
+
+    {
+        name: "iTunes",
+        icon: "fa-brands fa-apple",
+        url: "YOUR_ITUNES_LINK"
+    },
+
+    {
+        name: "Apple Music",
+        icon: "fa-brands fa-apple",
+        url: "YOUR_APPLE_MUSIC_LINK"
+    },
+
+    {
+        name: "YouTube Music",
+        icon: "fa-brands fa-youtube",
+        url: "YOUR_YOUTUBE_MUSIC_LINK"
+    },
+
+    {
+        name: "Amazon Music",
+        icon: "fa-brands fa-amazon",
+        url: "YOUR_AMAZON_MUSIC_LINK"
+    },
+
+    {
+        name: "SoundCloud",
+        icon: "fa-brands fa-soundcloud",
+        url: "YOUR_SOUNDCLOUD_LINK"
+    },
+
+    {
+        name: "TIDAL",
+        icon: "fa-solid fa-water",
+        url: "YOUR_TIDAL_LINK"
+    },
+
+    {
+        name: "LINE MUSIC",
+        icon: "fa-solid fa-music",
+        url: "YOUR_LINE_MUSIC_LINK"
+    },
+
+    {
+        name: "AWA",
+        icon: "fa-solid fa-music",
+        url: "YOUR_AWA_LINK"
+    },
+
+    {
+        name: "Bugs!",
+        icon: "fa-solid fa-music",
+        url: "YOUR_BUGS_LINK"
+    }
+]
+    },
+
+    {
+        artist: "SEIUN",
+
+        title: "WINK: Holiday Ver.",
+
+        type: "EP",
+
+        cover: "images/winkholiday.jpg",
+
+        releaseDate: "December 25, 2026",
+
+        releaseTimestamp: "2026-12-25T00:00:00+02:00",
+
+        released: false,
+
+        distributionProblem: false,
+
+        problemMessage: "",
+
+        tracks: [
+            "SUGAR (Holiday Ver.)",
+            "WINK (Holiday Ver.)",
+            "WINK (Sleepy Ver.)",
+            "FALLEN ANGEL (Holiday Ver.)",
+            "SOFT CLOUD (Sleepy Ver.)",
+            "ME & YOU (Sleepy Ver.)"
+        ],
+
+platforms: [
+    {
+        name: "Spotify",
+        icon: "fa-brands fa-spotify",
+        url: "YOUR_SPOTIFY_LINK"
+    },
+
+    {
+        name: "Melon",
+        icon: "fa-solid fa-music",
+        url: "YOUR_MELON_LINK"
+    },
+
+    {
+        name: "FLO",
+        icon: "fa-solid fa-music",
+        url: "YOUR_FLO_LINK"
+    },
+
+    {
+        name: "Genie Music",
+        icon: "fa-solid fa-music",
+        url: "YOUR_GENIE_LINK"
+    },
+
+    {
+        name: "Deezer",
+        icon: "fa-brands fa-deezer",
+        url: "YOUR_DEEZER_LINK"
+    },
+
+    {
+        name: "iTunes",
+        icon: "fa-brands fa-apple",
+        url: "YOUR_ITUNES_LINK"
+    },
+
+    {
+        name: "Apple Music",
+        icon: "fa-brands fa-apple",
+        url: "YOUR_APPLE_MUSIC_LINK"
+    },
+
+    {
+        name: "YouTube Music",
+        icon: "fa-brands fa-youtube",
+        url: "YOUR_YOUTUBE_MUSIC_LINK"
+    },
+
+    {
+        name: "Amazon Music",
+        icon: "fa-brands fa-amazon",
+        url: "YOUR_AMAZON_MUSIC_LINK"
+    },
+
+    {
+        name: "SoundCloud",
+        icon: "fa-brands fa-soundcloud",
+        url: "YOUR_SOUNDCLOUD_LINK"
+    },
+
+    {
+        name: "TIDAL",
+        icon: "fa-solid fa-water",
+        url: "YOUR_TIDAL_LINK"
+    },
+
+    {
+        name: "LINE MUSIC",
+        icon: "fa-solid fa-music",
+        url: "YOUR_LINE_MUSIC_LINK"
+    },
+
+    {
+        name: "AWA",
+        icon: "fa-solid fa-music",
+        url: "YOUR_AWA_LINK"
+    },
+
+    {
+        name: "Bugs!",
+        icon: "fa-solid fa-music",
+        url: "YOUR_BUGS_LINK"
+    }
+]
+    },
+
+    {
+        artist: "SUJI (SEIUN)",
+
+        title: "PERFECT",
+
+        type: "Single",
+
+        cover: "images/perfect.jpg",
+
+        releaseDate: "January 20, 2027",
+
+        releaseTimestamp: "2027-01-20T00:00:00+02:00",
+
+        released: false,
+
+        distributionProblem: false,
+
+        problemMessage: "",
+
+        tracks: [
+            "PERFECT",
+            "WINK (Suji Solo)"
+        ],
+
+platforms: [
+    {
+        name: "Spotify",
+        icon: "fa-brands fa-spotify",
+        url: "YOUR_SPOTIFY_LINK"
+    },
+
+    {
+        name: "Melon",
+        icon: "fa-solid fa-music",
+        url: "YOUR_MELON_LINK"
+    },
+
+    {
+        name: "FLO",
+        icon: "fa-solid fa-music",
+        url: "YOUR_FLO_LINK"
+    },
+
+    {
+        name: "Genie Music",
+        icon: "fa-solid fa-music",
+        url: "YOUR_GENIE_LINK"
+    },
+
+    {
+        name: "Deezer",
+        icon: "fa-brands fa-deezer",
+        url: "YOUR_DEEZER_LINK"
+    },
+
+    {
+        name: "iTunes",
+        icon: "fa-brands fa-apple",
+        url: "YOUR_ITUNES_LINK"
+    },
+
+    {
+        name: "Apple Music",
+        icon: "fa-brands fa-apple",
+        url: "YOUR_APPLE_MUSIC_LINK"
+    },
+
+    {
+        name: "YouTube Music",
+        icon: "fa-brands fa-youtube",
+        url: "YOUR_YOUTUBE_MUSIC_LINK"
+    },
+
+    {
+        name: "Amazon Music",
+        icon: "fa-brands fa-amazon",
+        url: "YOUR_AMAZON_MUSIC_LINK"
+    },
+
+    {
+        name: "SoundCloud",
+        icon: "fa-brands fa-soundcloud",
+        url: "YOUR_SOUNDCLOUD_LINK"
+    },
+
+    {
+        name: "TIDAL",
+        icon: "fa-solid fa-water",
+        url: "YOUR_TIDAL_LINK"
+    },
+
+    {
+        name: "LINE MUSIC",
+        icon: "fa-solid fa-music",
+        url: "YOUR_LINE_MUSIC_LINK"
+    },
+
+    {
+        name: "AWA",
+        icon: "fa-solid fa-music",
+        url: "YOUR_AWA_LINK"
+    },
+
+    {
+        name: "Bugs!",
+        icon: "fa-solid fa-music",
+        url: "YOUR_BUGS_LINK"
+    }
+]
+    }
+];
+
+
+/* ========================================
+   OPEN GUI
+======================================== */
+
+function openReleases(event) {
+
+    if (event) {
+        event.preventDefault();
+    }
+
+    const overlay =
+        document.getElementById("releaseOverlay");
+
+    overlay.classList.add("active");
+
+    document.body.style.overflow = "hidden";
+
+    renderReleases();
+
+}
+
+
+/* ========================================
+   CLOSE GUI
+======================================== */
+
+function closeReleases(event) {
+
+    if (
+        event &&
+        event.target !== event.currentTarget
+    ) {
+        return;
+    }
+
+    const overlay =
+        document.getElementById("releaseOverlay");
+
+    overlay.classList.remove("active");
+
+    document.body.style.overflow = "";
+
+}
+
+
+/* ========================================
+   RENDER RELEASES
+======================================== */
+
+function renderReleases() {
+
+    const container =
+        document.getElementById("releaseList");
+
+    container.innerHTML = "";
+
+
+    releases.forEach((release, index) => {
+
+        const card =
+            document.createElement("article");
+
+        card.className = "release-card";
+
+
+        /* TRACKLIST */
+
+        let trackHTML = "";
+
+        release.tracks.forEach((track, trackIndex) => {
+
+            trackHTML += `
+
+                <div class="track">
+
+                    <span class="track-number">
+                        ${String(trackIndex + 1).padStart(2, "0")}
+                    </span>
+
+                    <span class="track-name">
+                        ${track}
+                    </span>
+
+                </div>
+
+            `;
+
+        });
+
+
+        /* STREAMING PLATFORMS */
+
+        let platformsHTML = "";
+
+        release.platforms.forEach(platform => {
+
+            platformsHTML += `
+
+                <a
+                    class="platform"
+                    href="${platform.url}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    <i class="${platform.icon}"></i>
+
+                    ${platform.name}
+
+                </a>
+
+            `;
+
+        });
+
+
+        /* COUNTDOWN */
+
+        let countdownHTML = "";
+
+        if (!release.released) {
+
+            countdownHTML = `
+
+                <div class="release-countdown">
+
+                    <div class="countdown-label">
+                        Coming Soon
+                    </div>
+
+                    <div
+                        class="countdown"
+                        id="countdown-${index}"
+                    >
+                        Loading...
+                    </div>
+
+                </div>
+
+            `;
+
+        }
+
+
+        /* DISTRIBUTION PROBLEM */
+
+        let problemHTML = "";
+
+        if (release.distributionProblem) {
+
+            problemHTML = `
+
+                <div class="release-problem">
+
+                    <strong>
+                        Distribution Notice
+                    </strong>
+
+                    ${release.problemMessage}
+
+                </div>
+
+            `;
+
+        }
+
+
+        /* CARD */
+
+        card.innerHTML = `
+
+            <img
+                class="release-cover"
+                src="${release.cover}"
+                alt="${release.title} cover"
+            >
+
+
+            <div class="release-info">
+
+                <div class="release-artist">
+                    ${release.artist}
+                </div>
+
+
+                <h3 class="release-title">
+                    ${release.title}
+                </h3>
+
+
+                <div class="release-type">
+                    ${release.type}
+                </div>
+
+
+                <div class="release-date">
+
+                    ${
+                        release.released
+                        ? "Released " + release.releaseDate
+                        : "Releases " + release.releaseDate
+                    }
+
+                </div>
+
+
+                ${countdownHTML}
+
+
+                ${problemHTML}
+
+
+                <div class="tracklist">
+
+                    ${trackHTML}
+
+                </div>
+
+
+                <div class="platforms">
+
+                    ${platformsHTML}
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        container.appendChild(card);
+
+
+        if (!release.released) {
+
+            startCountdown(
+                index,
+                release.releaseTimestamp
+            );
+
+        }
+
+    });
+
+}
+
+
+/* ========================================
+   COUNTDOWN
+======================================== */
+
+function startCountdown(index, timestamp) {
+
+    const element =
+        document.getElementById(
+            `countdown-${index}`
+        );
+
+    if (!element) {
+        return;
+    }
+
+
+    function updateCountdown() {
+
+        const now =
+            new Date().getTime();
+
+        const target =
+            new Date(timestamp).getTime();
+
+        const difference =
+            target - now;
+
+
+        if (difference <= 0) {
+
+            element.innerHTML =
+                "Out now";
+
+            return;
+
+        }
+
+
+        const days =
+            Math.floor(
+                difference /
+                (1000 * 60 * 60 * 24)
+            );
+
+
+        const hours =
+            Math.floor(
+                (difference %
+                (1000 * 60 * 60 * 24)) /
+                (1000 * 60 * 60)
+            );
+
+
+        const minutes =
+            Math.floor(
+                (difference %
+                (1000 * 60 * 60)) /
+                (1000 * 60)
+            );
+
+
+        const seconds =
+            Math.floor(
+                (difference %
+                (1000 * 60)) /
+                1000
+            );
+
+
+        element.innerHTML =
+
+            `${days}d ` +
+            `${hours}h ` +
+            `${minutes}m ` +
+            `${seconds}s`;
+
+    }
+
+
+    updateCountdown();
+
+    setInterval(
+        updateCountdown,
+        1000
+    );
+
+}
+
+
+/* ========================================
+   ESCAPE KEY
+======================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Escape") {
+
+            closeReleases();
+
+        }
+
+    }
+);
+
+</script>
+
+<script>
+
+const bubbleWrap = document.getElementById("profileBubble");
+const bubble = bubbleWrap.querySelector(".bubble");
+
+let targetX = 0;
+let targetY = 0;
+
+let currentX = 0;
+let currentY = 0;
+
+let isHovering = false;
+
+
+/* ========================================
+   MOUSE FOLLOW
+======================================== */
+
+bubbleWrap.addEventListener("mousemove", (event) => {
+
+    const rect = bubbleWrap.getBoundingClientRect();
+
+    const x =
+        (event.clientX - rect.left) /
+        rect.width;
+
+    const y =
+        (event.clientY - rect.top) /
+        rect.height;
+
+    /*
+        Convert cursor position
+        into a small rotation.
+    */
+
+    targetX = (x - 0.5) * 18;
+    targetY = (y - 0.5) * -18;
+
+    isHovering = true;
+
+});
+
+
+/* Reset when cursor leaves */
+
+bubbleWrap.addEventListener("mouseleave", () => {
+
+    targetX = 0;
+    targetY = 0;
+
+    isHovering = false;
+
+});
+
+
+/* ========================================
+   SMOOTH MOVEMENT
+======================================== */
+
+function animateBubble() {
+
+    currentX +=
+        (targetX - currentX) * 0.08;
+
+    currentY +=
+        (targetY - currentY) * 0.08;
+
+
+    if (!bubbleWrap.classList.contains("pinching")) {
+
+        bubble.style.transform = `
+            rotateX(${currentY}deg)
+            rotateY(${currentX}deg)
+        `;
+
+    }
+
+    requestAnimationFrame(animateBubble);
+
+}
+
+animateBubble();
+
+
+/* ========================================
+   CLICK PINCH
+======================================== */
+
+bubbleWrap.addEventListener("click", () => {
+
+    if (bubbleWrap.classList.contains("pinching")) {
+        return;
+    }
+
+    bubbleWrap.classList.add("pinching");
+
+    setTimeout(() => {
+
+        bubbleWrap.classList.remove("pinching");
+
+    }, 650);
+
+});
+
+
+/* ========================================
+   TOUCH DEVICES
+======================================== */
+
+bubbleWrap.addEventListener("touchstart", () => {
+
+    bubbleWrap.classList.add("pinching");
+
+    setTimeout(() => {
+
+        bubbleWrap.classList.remove("pinching");
+
+    }, 650);
+
+}, {
+    passive: true
+});
+
+</script>
+
+</body>
+</html>
