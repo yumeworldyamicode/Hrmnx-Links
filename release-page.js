@@ -16,23 +16,36 @@
     if (!client || !slug || !shopSection || !productsContainer) return;
 
     try {
-      const { data: release, error: releaseError } = await client
-        .from("links_releases")
-        .select("id, artist_slug, slug, title")
-        .eq("artist_slug", "seiun")
-        .eq("slug", slug)
-        .eq("is_published", true)
-        .maybeSingle();
-
-      if (releaseError || !release) return;
-
-      const { data: products, error } = await client
+      let productQuery = client
         .from("shop_products")
-        .select("id, name, description, price_amount, currency, image_url, checkout_url")
-        .eq("release_id", release.id)
+        .select("id, artist_id, release_id, name, description, price_amount, currency, image_url, checkout_url")
         .eq("is_active", true)
         .order("sort_order", { ascending: true });
 
+      if (slug === "artist") {
+        const { data: artist, error: artistError } = await client
+          .from("links_artists")
+          .select("id, slug")
+          .eq("slug", "seiun")
+          .eq("is_published", true)
+          .maybeSingle();
+
+        if (artistError || !artist) return;
+        productQuery = productQuery.eq("artist_id", artist.id);
+      } else {
+        const { data: release, error: releaseError } = await client
+          .from("links_releases")
+          .select("id, artist_slug, slug, title")
+          .eq("artist_slug", "seiun")
+          .eq("slug", slug)
+          .eq("is_published", true)
+          .maybeSingle();
+
+        if (releaseError || !release) return;
+        productQuery = productQuery.eq("release_id", release.id);
+      }
+
+      const { data: products, error } = await productQuery;
       if (error || !products || products.length === 0) return;
 
       productsContainer.replaceChildren();
@@ -43,7 +56,7 @@
         if (product.image_url) {
           const image = document.createElement("img");
           image.src = product.image_url;
-          image.alt = product.name || "Release merchandise";
+          image.alt = product.name || "SEIUN merchandise";
           image.loading = "lazy";
           card.appendChild(image);
         }
