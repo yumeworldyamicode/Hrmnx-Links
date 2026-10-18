@@ -6,7 +6,7 @@
   "use strict";
 
   const SUPABASE_URL = "https://bftgnubawqwvpbqkldpm.supabase.co";
-  const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_Uoky-Y8iSnzCu0wOa5_y-w_McCGJcJ4";
+  const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_Uoky-Y8iSnzCu0wOa5_y-w_McGOJcJ4";
 
   if (!window.supabase || typeof window.supabase.createClient !== "function") {
     console.error("Supabase JS did not load. Check the CDN connection.");
